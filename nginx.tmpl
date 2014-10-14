@@ -1,6 +1,7 @@
 server {
 	listen 80 default_server;
 	server_name _; # This is just an invalid value which will never trigger on a real hostname.
+	underscores_in_headers on;
 	error_log /proc/self/fd/2;
 	access_log /proc/self/fd/1;
 	return 503;
@@ -44,6 +45,7 @@ server {
 	gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
 	server_name {{ $host }};
+	underscores_in_headers on;
 	proxy_buffering off;
 	error_log /proc/self/fd/2;
 	access_log /proc/self/fd/1;
